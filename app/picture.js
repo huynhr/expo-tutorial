@@ -1,6 +1,7 @@
 import React, { useState, useRef } from "react";
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, View, Platform } from "react-native";
+import { Link } from "expo-router";
 import * as ImagePicker from "expo-image-picker";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import * as MediaLibrary from "expo-media-library";
@@ -14,11 +15,11 @@ import {
   EmojiPicker,
   EmojiList,
   EmojiSticker,
-} from "./components";
+} from "../components";
 
-const PlaceholderImage = require("./assets/images/background-image.png");
+const PlaceholderImage = require("../assets/images/background-image.png");
 
-export default function App() {
+export default function Picture() {
   const [status, requestPermission] = MediaLibrary.usePermissions();
   const [showAppOptions, setShowAppOptions] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
@@ -133,7 +134,7 @@ export default function App() {
         <EmojiPicker isVisible={isModalVisible} onClose={onModalClose}>
           <EmojiList onSelect={setPickedEmoji} onCloseModal={onModalClose} />
         </EmojiPicker>
-        <StatusBar style="auto" />
+        <StatusBar style="light" />
       </View>
     </GestureHandlerRootView>
   );
